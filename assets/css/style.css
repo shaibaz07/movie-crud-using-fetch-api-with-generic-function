@@ -1,0 +1,208 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+ 
+
+
+#spinner{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+      width: 100%;
+     height: 100vh; 
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255 , 255 , 255 , .8); 
+
+}
+
+
+
+:root {
+    --primary-color: #e50914;
+    --primary-hover-color: rgb(193, 17, 25);
+    --sec-color: #212529;
+    --color-white: #fff;
+
+}
+
+
+
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+
+body::before {
+
+    content: '';
+    background-image: linear-gradient(360deg,
+            rgba(0, 0, 0, 0.85) 3%,
+            rgba(0, 0, 0, 0.8465) 11.08%,
+            rgba(0, 0, 0, 0.8361) 19.17%,
+            rgba(0, 0, 0, 0.8187) 27.25%,
+            rgba(0, 0, 0, 0.7944) 35.33%,
+            rgba(0, 0, 0, 0.7632) 43.42%,
+            rgba(0, 0, 0, 0.725) 51.5%,
+            rgba(0, 0, 0, 0.6868) 59.58%,
+            rgba(0, 0, 0, 0.6556) 67.67%,
+            rgba(0, 0, 0, 0.6313) 75.75%,
+            rgba(0, 0, 0, 0.6139) 83.83%,
+            rgba(0, 0, 0, 0.6035) 91.92%,
+            rgba(0, 0, 0, 0.6) 100%), url("../images/bgImage.jpg");
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
+    z-index: -1;
+}
+
+section {
+    height: 70vh;
+}
+
+.net-pri-btn {
+    background-color: var(--primary-color);
+    color: var(--color-white) !important;
+    transition: all .4s ease-in-out;
+}
+
+.net-pri-btn:hover {
+    background-color: var(--primary-hover-color);
+    /* background-color: aqua; */
+}
+
+.net-sec-btn {
+    background-color: var(--sec-color);
+    color: var(--color-white) !important;
+
+}
+
+.logo {
+    width: 150px;
+    display: inline-block;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.movieCard {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--color-white);
+}
+
+.movieCard h4 {
+    /* border: 1px solid red; */
+    /* height: 40px; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.movieCard figure {
+    height: 300px;
+    border: 1px solid red;
+    overflow: hidden;
+    position: relative;
+}
+
+.movieCard figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+figcaption {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border: 1px solid red;
+    overflow-y: auto;
+    transform: translateY(115%);
+    opacity: 0;
+    transition: all .4s ease-in-out;
+
+}
+
+.movieCard:hover figcaption,
+.movieCard:focus figcaption,
+.movieCard:active figcaption {
+    transform: translate(0%);
+    opacity: 1;
+}
+
+
+.backDrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+}
+
+.movieModal {
+    position: fixed;
+    z-index: 10;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    display: none;
+}
+
+.backDrop.active,
+.movieModal.active{
+    display: block;
+}
+
+.movieModal.active{
+    animation: slideDown .4s ease-in-out;
+}
+
+.backDrop.active{
+    animation: fadeIn  .4s ease-in-out;
+}
+
+
+
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown{
+    0%{
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+
+    }
+}
