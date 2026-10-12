@@ -16,6 +16,8 @@ const movieRating = document.getElementById('movieRating')
 const updateMovieBtn = document.getElementById('updateMovieBtn')
 const addMovieBtn = document.getElementById('addMovieBtn')
 const spinner = document.getElementById('spinner')
+const updateName = document.getElementById('updateName')
+
 
 
 
@@ -38,15 +40,15 @@ function hideSpinner(){
 
 
 
-const movieContainer = document.getElementById('movieContainer')
+// const movieContainer = document.getElementById('movieContainer')
 
-let moviesData = localStorage.getItem('moviesArr')
+// let moviesData = localStorage.getItem('moviesArr')
 
-let moviesArr = []
+// let moviesArr = []
 
-if (moviesData) {
-    moviesArr = JSON.parse(moviesData)
-}
+// if (moviesData) {
+//     moviesArr = JSON.parse(moviesData)
+// }
 
 
 
@@ -66,9 +68,14 @@ function setRating(rating) {
 
 
 function onModalToggle() {
+    updateName.innerHTML = 'Add Movie'
+
     movieModal.classList.toggle('active')
     backDrop.classList.toggle('active')
     movieForm.reset()
+
+    updateMovieBtn.classList.add('d-none')
+    addMovieBtn.classList.remove('d-none')
 
 }
 
@@ -268,10 +275,13 @@ function onMovieAdd(eve) {
 function onMovieEdit(ele) {
     let Edit_Id = ele.closest('.col-md-3').id
     state.editId = Edit_Id
+
+    onModalToggle()
+
+    updateName.innerHTML = 'Update Movie'
     // cl(Edit_Id)
     let Edit_Obj = state.moviesArr.find(m => m.id === Edit_Id)
     // cl(Edit_Obj)
-    onModalToggle()
 
     movieName.value = Edit_Obj.movieName;
     movieImg.value = Edit_Obj.movieImg
@@ -301,10 +311,8 @@ function onUpdateMovie() {
         updatedAt: Date.now()
     }
 
-    let getIndex = state.moviesArr.findIndex(m => m.id === Update_Id)
-    state.moviesArr[getIndex] = Updated_Obj
+    
 
-    // cl(Updated_Obj)
             onModalToggle()
 
          showSpinner()
